@@ -1,7 +1,9 @@
 version: '3.8'
 services:
   birthday-bot:
-    image: python:3.11-slim   # <-- вместо build
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: birthday_bot
     restart: unless-stopped
     volumes:
@@ -9,7 +11,6 @@ services:
       - ./images:/app/images
     environment:
       TOKEN: "${TOKEN}"
-
 
 
 
