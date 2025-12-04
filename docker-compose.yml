@@ -2,11 +2,15 @@ version: '3.8'
 
 services:
   birthday-bot:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: birthday_bot
     restart: unless-stopped
     volumes:
       - ./data:/app/data
       - ./images:/app/images
-    env_file:
-      - .env
+    environment:
+      TOKEN: "${TOKEN}"
+
+
